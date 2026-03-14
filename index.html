@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GIN FOXI – Official Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0d1b2e;
+      --orange: #f97316;
+      --orange-dark: #ea6500;
+      --white: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); }
+
+    /* NAV */
+    nav {
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 60px; position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { font-family: 'Bebas Neue', cursive; font-size: 1.6rem; color: var(--white); letter-spacing: 2px; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,.75); text-decoration: none; font-size: .9rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--orange); }
+    .nav-icons { display: flex; gap: 18px; }
+    .nav-icons svg { stroke: rgba(255,255,255,.8); cursor: pointer; transition: stroke .2s; }
+    .nav-icons svg:hover { stroke: var(--orange); }
+
+    /* SLIDER */
+    .slider-wrap { position: relative; overflow: hidden; width: 100%; }
+    .slides { display: flex; transition: transform .6s cubic-bezier(.4,0,.2,1); }
+    .slide { min-width: 100%; line-height: 0; background: #000; }
+    .slide img { width: 100%; display: block; max-height: 580px; object-fit: cover; object-position: center; }
+    .slider-dots {
+      position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 10px; z-index: 5;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.45); cursor: pointer; transition: background .3s, transform .3s; }
+    .dot.active { background: var(--orange); transform: scale(1.3); }
+    .arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(0,0,0,.3); border: none; color: white;
+      width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+      font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
+      transition: background .2s; z-index: 5; backdrop-filter: blur(4px);
+    }
+    .arrow:hover { background: var(--orange); }
+    .arrow-left { left: 20px; }
+    .arrow-right { right: 20px; }
+
+    /* VIDEO */
+    .video-section {
+      background: #111827; padding: 56px 40px;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .section-label { font-size: .78rem; font-weight: 700; letter-spacing: 3px; color: var(--orange); text-transform: uppercase; margin-bottom: 8px; }
+    .section-title { font-family: 'Bebas Neue', cursive; font-size: 2.6rem; color: var(--white); text-align: center; margin-bottom: 32px; }
+
+    /* 点击封面跳转 YouTube */
+    .video-thumb-wrap {
+      width: 100%; max-width: 960px; position: relative;
+      border-radius: 14px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.6);
+      cursor: pointer; display: block; line-height: 0;
+    }
+    .video-thumb-wrap img {
+      width: 100%; display: block;
+      transition: transform .4s ease, filter .4s ease;
+    }
+    .video-thumb-wrap:hover img {
+      transform: scale(1.03);
+      filter: brightness(.75);
+    }
+    .play-btn {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px; height: 80px; border-radius: 50%;
+      background: rgba(249,115,22,.92);
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, transform .2s;
+      box-shadow: 0 6px 30px rgba(0,0,0,.5);
+    }
+    .video-thumb-wrap:hover .play-btn {
+      background: var(--orange);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    .play-btn svg { margin-left: 5px; }
+    .video-hint {
+      margin-top: 16px; color: rgba(255,255,255,.35);
+      font-size: .82rem; letter-spacing: .5px;
+    }
+
+    /* PROMO IMAGES */
+    .promo-full { width: 100%; display: block; line-height: 0; }
+    .promo-full img { width: 100%; display: block; }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy); padding: 52px 40px;
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+    }
+    footer h3 { font-family: 'Bebas Neue', cursive; font-size: 2.1rem; color: var(--white); letter-spacing: 1px; }
+    footer p { color: rgba(255,255,255,.5); font-size: .9rem; }
+    .email-row { display: flex; margin-top: 6px; }
+    .email-row input {
+      padding: 13px 20px; border: none; border-radius: 6px 0 0 6px;
+      font-size: .9rem; width: 280px; outline: none;
+      background: rgba(255,255,255,.08); color: white;
+      border: 1px solid rgba(255,255,255,.14); border-right: none;
+    }
+    .email-row input::placeholder { color: rgba(255,255,255,.3); }
+    .email-row button {
+      background: var(--orange); color: white; border: none;
+      padding: 13px 24px; border-radius: 0 6px 6px 0;
+      font-weight: 700; cursor: pointer; font-size: .9rem; transition: background .2s;
+    }
+    .email-row button:hover { background: var(--orange-dark); }
+    .footer-bottom { margin-top: 16px; color: rgba(255,255,255,.25); font-size: .75rem; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">GIN FOXI</span>
+  <ul class="nav-links">
+    <li><a href="warranty.html">Extend Your Warranty</a></li>
+    <li><a href="index.html" class="active">Home</a></li>
+  </ul>
+  <div class="nav-icons">
+    <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+    <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+  </div>
+</nav>
+
+<!-- SLIDER -->
+<div class="slider-wrap">
+  <div class="slides" id="slides">
+    <div class="slide">
+      <img src="slide1.jpg" alt="7000mAh Battery Case">
+    </div>
+    <div class="slide">
+      <img src="slide2.jpg" alt="GIN FOXI Product">
+    </div>
+  </div>
+  <button class="arrow arrow-left" onclick="changeSlide(-1)">&#8592;</button>
+  <button class="arrow arrow-right" onclick="changeSlide(1)">&#8594;</button>
+  <div class="slider-dots" id="dots">
+    <div class="dot active" onclick="goToSlide(0)"></div>
+    <div class="dot" onclick="goToSlide(1)"></div>
+  </div>
+</div>
+
+<!-- VIDEO — 点击封面跳转 YouTube -->
+<section class="video-section">
+  <div class="section-label">Product Demo</div>
+  <div class="section-title">See It In Action</div>
+
+  <a class="video-thumb-wrap" href="https://youtu.be/hQd0UCJHRLE" target="_blank">
+    <!-- YouTube 自动提供高清封面图，无需上传 -->
+    <img src="https://img.youtube.com/vi/hQd0UCJHRLE/maxresdefault.jpg" alt="GIN FOXI Product Video">
+    <div class="play-btn">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+        <polygon points="5,3 19,12 5,21"/>
+      </svg>
+    </div>
+  </a>
+  <p class="video-hint">▶ Click to watch on YouTube</p>
+</section>
+
+<!-- 宣传图 1 -->
+<div class="promo-full">
+  <img src="promo1.jpg" alt="Battery Case for iPhone 15 Series">
+</div>
+
+<!-- 宣传图 2 -->
+<div class="promo-full">
+  <img src="promo2.jpg" alt="GIN FOXI Product Features">
+</div>
+
+<!-- 宣传图 3 -->
+<div class="promo-full">
+  <img src="promo3.jpg" alt="Portable Powerful Safe">
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <h3>Subscribe to Our Emails</h3>
+  <p>Be the first to know about new collections and exclusive offers.</p>
+  <div class="email-row">
+    <input type="email" placeholder="Email address" />
+    <button>Subscribe</button>
+  </div>
+  <p class="footer-bottom">© 2025 GIN FOXI. All rights reserved.</p>
+</footer>
+
+<script>
+  let current = 0;
+  const total = 2;
+  function updateSlider() {
+    document.getElementById('slides').style.transform = `translateX(-${current * 100}%)`;
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+  function changeSlide(dir) { current = (current + dir + total) % total; updateSlider(); }
+  function goToSlide(n) { current = n; updateSlider(); }
+  setInterval(() => changeSlide(1), 5000);
+</script>
+</body>
+</html>
