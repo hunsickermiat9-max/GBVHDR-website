@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GIN FOXI – Extend Your Warranty</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <title>GIN FOX – Extend Your Warranty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:wght@700;800&family=Inter:wght@700;800;900&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --navy: #0d1b2e;
-      --orange: #f97316;
+      --navy:        #0d1b2e;
+      --orange:      #f97316;
       --orange-dark: #ea6500;
-      --white: #ffffff;
-      --light: #f5f6f8;
-      --text: #1a1a2e;
+      --white:       #ffffff;
+      --light:       #f5f6f8;
+      --text:        #1a1a2e;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--text); }
@@ -21,16 +23,18 @@
     nav {
       background: var(--navy);
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 32px; height: 60px; position: sticky; top: 0; z-index: 100;
+      padding: 0 32px; height: 64px;
+      position: sticky; top: 0; z-index: 100;
     }
     .nav-logo {
-      font-family: 'Bebas Neue', cursive; font-size: 1.6rem;
-      color: var(--white); letter-spacing: 2px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.8rem;
+      color: var(--white); letter-spacing: 3px;
     }
     .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a {
       color: rgba(255,255,255,0.75); text-decoration: none;
-      font-size: .9rem; font-weight: 500; transition: color .2s;
+      font-size: 1rem; font-weight: 500; transition: color .2s;
     }
     .nav-links a:hover, .nav-links a.active { color: var(--orange); }
     .nav-icons { display: flex; gap: 18px; }
@@ -39,162 +43,316 @@
 
     /* ── HERO ── */
     .hero {
-      background: var(--white); padding: 64px 24px 48px;
+      background: var(--white);
+      padding: 24px 24px 56px;
       text-align: center;
     }
     .hero h1 {
-      font-size: 2.4rem; font-weight: 700; margin-bottom: 18px; line-height: 1.2;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900; margin-bottom: 24px; line-height: 1.2;
     }
-    .hero h1 span { color: var(--orange); font-family: 'Bebas Neue', cursive; letter-spacing: 2px; font-size: 2.8rem; }
+    .hero h1 span {
+      color: var(--orange);
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+    }
     .hero p {
-      font-size: 1.1rem; color: #444; max-width: 560px; margin: 0 auto 28px;
-      line-height: 1.7;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+      font-weight: 700;
+      color: #333; max-width: 640px; margin: 0 auto 32px;
+      line-height: 1.75;
     }
+    /* Service list – match ATGIH list sizing */
     .service-list {
-      list-style: none; margin-bottom: 36px;
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      list-style: none; margin-bottom: 40px;
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
     }
-    .service-list li { font-size: .97rem; color: #555; }
+    .service-list li {
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      color: #555; font-weight: 500;
+    }
     .service-list li::before { content: ""; }
 
-    /* ── BUTTONS ── */
-    .btn-group { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    /* ── BUTTONS – exact ATGIH size ── */
+    .btn-group {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 18px;
+    }
     .btn-contact {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--orange); color: var(--white);
-      border: none; border-radius: 6px; padding: 14px 40px;
-      font-size: 1rem; font-weight: 700; cursor: pointer;
-      text-decoration: none; width: 300px; justify-content: center;
-      transition: background .2s, transform .15s, box-shadow .2s;
-      box-shadow: 0 4px 18px rgba(249,115,22,.3);
+      display: inline-flex; align-items: center; justify-content: center;
+      background: #ff7500;
+      color: #fff;
+      border: none; border-radius: 10px;
+      width: 350px; height: 50px;
+      font-size: 24px;
+      font-weight: 700; cursor: pointer;
+      text-decoration: none;
+      transition: background .2s;
     }
-    .btn-contact:hover {
-      background: var(--orange-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(249,115,22,.4);
+    .btn-contact:hover { background: #e06800; }
+    @media (max-width: 767px) {
+      .btn-contact { width: 200px; height: 45px; font-size: 15px; }
     }
-    .btn-contact.fb { background: #1877f2; box-shadow: 0 4px 18px rgba(24,119,242,.3); }
-    .btn-contact.fb:hover { background: #1464d4; box-shadow: 0 8px 24px rgba(24,119,242,.4); }
 
-    /* ── STATS CARD ── */
+    /* ── STATS CARD – match ATGIH sizing ── */
     .stats-card {
-      max-width: 680px; margin: 52px auto;
-      background: var(--white); border: 2px solid var(--orange);
-      border-radius: 16px; padding: 36px 40px; text-align: center;
+      max-width: 1000px; margin: 60px auto;
+      background: linear-gradient(135deg,#f8f9fa 0%,#ffffff 100%);
+      border: 2px solid var(--orange);
+      border-top: 6px solid var(--orange);
+      border-radius: 16px; padding: 60px 40px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,.05),
+                  0 0 0 1px rgba(249,115,22,.1) inset;
+      position: relative; overflow: hidden;
     }
-    .stats-number {
-      font-family: 'Bebas Neue', cursive; font-size: 2.8rem; color: var(--orange);
-      display: inline; margin-right: 8px;
+    .stats-card::before {
+      content:'';
+      position:absolute; inset:0;
+      background-image:
+        radial-gradient(circle at 15% 50%,rgba(249,115,22,.05) 0%,transparent 20%),
+        radial-gradient(circle at 85% 30%,rgba(249,115,22,.05) 0%,transparent 20%);
     }
-    .stats-title { font-size: 1.6rem; font-weight: 700; display: inline; }
+    .stats-card h2 {
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      font-weight: 700; color: #2c3e50;
+      margin-bottom: 40px; line-height: 1.2;
+      position: relative; z-index: 1;
+      letter-spacing: -.5px;
+    }
+    .stats-card h2 span {
+      color: var(--orange); font-weight: 800;
+      position: relative; display: inline-block;
+    }
+    .stats-card h2 span::after {
+      content:'';
+      position:absolute; bottom:4px; left:0;
+      width:100%; height:8px;
+      background:rgba(249,115,22,.18);
+      border-radius:4px; z-index:-1;
+    }
     .stats-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 14px 40px; margin-top: 28px;
+      display: flex; flex-direction: column;
+      gap: 20px; position: relative; z-index: 1;
+    }
+    .stats-row {
+      display: flex; justify-content: center;
+      gap: 60px;
     }
     .stat-item {
-      display: flex; align-items: center; gap: 8px;
-      font-size: .92rem; color: #444; font-weight: 500;
+      color: #4a5568;
+      font-size: clamp(1.2rem, 2vw, 1.9rem);
+      font-weight: 500; text-align: left;
+      min-width: 200px;
+      padding: 8px 0;
+      border-bottom: 2px solid transparent;
+      transition: all .3s;
+    }
+    .stat-item:hover {
+      color: #2c3e50;
+      transform: translateY(-2px);
+      border-bottom-color: rgba(249,115,22,.3);
     }
     .stat-item::before {
-      content: "✓"; color: var(--orange); font-weight: 900; font-size: 1rem;
+      content:"✓"; color:var(--orange);
+      font-weight:900; margin-right:10px;
     }
 
     /* ── DIVIDER ── */
-    hr { border: none; border-top: 1px solid #e0e0e0; margin: 0 auto; max-width: 800px; }
+    hr { border:none; border-top:1px solid #e0e0e0; margin:0 auto; max-width:1000px; }
 
-    /* ── FAQ ── */
-    .faq-section { padding: 60px 24px; max-width: 760px; margin: 0 auto; }
+    /* ── FAQ – answers always visible ── */
+    .faq-section {
+      padding: 70px 24px 60px;
+      max-width: 1000px; margin: 0 auto;
+    }
     .faq-section h2 {
-      text-align: center; font-size: 1.9rem; font-weight: 700;
-      margin-bottom: 32px; color: var(--text);
+      text-align: center;
+      font-size: clamp(1.8rem, 5vw, 4rem);
+      font-weight: 700; margin-bottom: clamp(30px,4vw,50px);
+      color: #333;
     }
     .faq-item {
       background: var(--white); border-radius: 10px;
-      margin-bottom: 10px; overflow: hidden;
-      border: 1px solid #e8e8e8;
+      margin-bottom: 16px;
+      border: 1px solid #e6e6e6;
+      overflow: hidden;
+      transition: border-color .3s, box-shadow .3s;
     }
+    .faq-item:hover {
+      border-color: var(--orange);
+      box-shadow: 0 4px 12px rgba(249,115,22,.15);
+    }
+    /* Question row */
     .faq-q {
-      width: 100%; background: none; border: none;
-      padding: 18px 22px; text-align: left;
-      font-size: .97rem; font-weight: 500; color: var(--text);
-      cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+      width: 100%; background: var(--white);
+      padding: clamp(16px,3vw,25px) clamp(16px,3vw,30px);
+      text-align: left;
+      font-size: clamp(1.1rem, 2.2vw, 2rem);
+      font-weight: 600; color: #333;
       font-family: 'DM Sans', sans-serif;
+      border: none; cursor: default;
+      display: block;
     }
-    .faq-q:hover { background: #fafafa; }
-    .faq-icon {
-      color: var(--orange); font-size: 1.4rem; font-weight: 300;
-      line-height: 1; flex-shrink: 0; transition: transform .3s;
+    /* Q: / A: label */
+    .faq-label {
+      color: var(--orange);
+      font-weight: 800;
+      margin-right: 6px;
     }
-    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    /* Answer always shown */
     .faq-a {
-      max-height: 0; overflow: hidden;
-      transition: max-height .35s ease, padding .35s;
-      padding: 0 22px; font-size: .92rem; color: #555; line-height: 1.7;
+      padding: 0 clamp(16px,3vw,30px) clamp(16px,3vw,24px);
+      font-size: clamp(1rem, 1.8vw, 1.8rem);
+      color: #555; line-height: 1.75;
+      border-top: 1px solid #f0f0f0;
     }
-    .faq-item.open .faq-a { max-height: 300px; padding: 4px 22px 18px; }
 
     /* ── WARRANTY POLICY ── */
     .policy-section {
-      max-width: 760px; margin: 0 auto;
-      padding: 48px 24px 60px; background: var(--light);
+      max-width: 1000px; margin: 0 auto;
+      padding: 48px 24px 64px;
     }
-    .policy-section h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 14px; }
-    .policy-section h4 { font-size: .95rem; font-weight: 700; margin: 22px 0 8px; }
+    .policy-section h3 {
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-weight: 700; margin-bottom: 16px;
+    }
+    .policy-section h4 {
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      font-weight: 700; margin: 24px 0 10px;
+    }
     .policy-section p, .policy-section li {
-      font-size: .9rem; color: #555; line-height: 1.8; margin-bottom: 10px;
+      font-size: clamp(.95rem, 1.8vw, 1.3rem);
+      color: #555; line-height: 1.85; margin-bottom: 12px;
     }
-    .policy-section ol { padding-left: 20px; }
+    .policy-section ol li {
+      font-weight: 700; color: #333;
+    }
+    .policy-section ol { padding-left: 22px; }
     .policy-section a { color: var(--orange); text-decoration: none; }
     .policy-section a:hover { text-decoration: underline; }
 
     /* ── FOOTER ── */
+    /* ── FOOTER / NEWSLETTER – match ATGIH color-scheme-3 ── */
     footer {
-      background: var(--navy); padding: 52px 40px;
-      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      background: rgb(1,4,17);
+      padding: 28px 2rem 40px;
+      text-align: center;
     }
-    footer h3 {
-      font-family: 'Bebas Neue', cursive; font-size: 2.2rem;
-      color: var(--white); letter-spacing: 1px;
+    /* Title – h2 styled as h1 like ATGIH */
+    .newsletter-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.2;
     }
-    footer p { color: rgba(255,255,255,.55); font-size: .9rem; }
-    .email-row { display: flex; gap: 0; margin-top: 8px; }
-    .email-row input {
-      padding: 13px 20px; border: none; border-radius: 6px 0 0 6px;
-      font-size: .9rem; width: 280px; outline: none;
-      background: rgba(255,255,255,.1); color: white;
-      border: 1px solid rgba(255,255,255,.15); border-right: none;
+    .newsletter-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,.75);
+      margin-bottom: 24px;
     }
-    .email-row input::placeholder { color: rgba(255,255,255,.35); }
-    .email-row button {
-      background: var(--orange); color: white; border: none;
-      padding: 13px 24px; border-radius: 0 6px 6px 0;
-      font-weight: 700; cursor: pointer; font-size: .9rem;
+    /* Field wrapper – matches Shopify Refresh .field */
+    .newsletter-field {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      width: min(480px, 90vw);
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .newsletter-field input {
+      flex: 1;
+      padding: 22px 20px 8px;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: 1rem;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .newsletter-field input::placeholder { color: transparent; }
+    /* Floating label */
+    .newsletter-field label {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: rgba(255,255,255,.65);
+      pointer-events: none;
+      transition: top .15s, font-size .15s, color .15s;
+    }
+    .newsletter-field input:focus + label,
+    .newsletter-field input:not(:placeholder-shown) + label {
+      top: 10px;
+      transform: none;
+      font-size: .72rem;
+      color: rgba(255,255,255,.5);
+    }
+    /* Arrow submit button */
+    .newsletter-field button {
+      background: none;
+      border: none;
+      border-left: 1px solid rgba(255,255,255,.3);
+      padding: 0 18px;
+      height: 100%;
+      cursor: pointer;
+      color: #fff;
+      display: flex; align-items: center;
       transition: background .2s;
     }
-    .email-row button:hover { background: var(--orange-dark); }
+    .newsletter-field button:hover { background: rgba(255,255,255,.08); }
+    .newsletter-field button svg { display: block; }
     .footer-bottom {
-      margin-top: 20px; color: rgba(255,255,255,.3);
-      font-size: .78rem; text-align: center;
+      margin-top: 28px;
+      color: rgba(255,255,255,.3);
+      font-size: .78rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .stats-row { gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .stats-card { padding: 40px 24px; margin: 40px 16px; }
+      .stats-row { flex-wrap: wrap; justify-content: center; gap: 16px 30px; }
+      .stat-item { min-width: 150px; text-align: center; font-size: 1.5rem; }
+      /* list items left-aligned, block itself stays centered */
+      .service-list { align-items: flex-start; display: inline-flex; }
+      .hero { display: flex; flex-direction: column; align-items: center; }
+    }
+    @media (max-width: 480px) {
+      .stats-card { padding: 30px 16px; }
+      .stats-row { gap: 12px 16px; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ══ NAV ══ -->
 <nav>
-  <span class="nav-logo">GIN FOXI</span>
+  <span class="nav-logo">GIN FOX</span>
   <ul class="nav-links">
-    <li><a href="warranty.html" class="active">Extend Your Warranty</a></li>
-    <li><a href="/index.html">Home</a></li>
+    <li><a href="#" class="active">Extend Your Warranty</a></li>
+    <li><a href="/">Home</a></li>
   </ul>
   <div class="nav-icons">
+    <!-- search -->
     <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-      <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/>
+      <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
     </svg>
+    <!-- account -->
     <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
       <circle cx="12" cy="7" r="4"/>
     </svg>
+    <!-- bag -->
     <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
       <path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
       <line x1="3" y1="6" x2="21" y2="6"/>
@@ -203,13 +361,11 @@
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ══ HERO ══ -->
 <div class="hero">
-  <h1><span>GIN FOXI</span> Official Support</h1>
-  <!-- ✏️ EDIT: Change the intro text below -->
+  <h1><span>GIN FOX</span> Official Support</h1>
   <p>Thanks for your purchase! Click the button below to send your Amazon order number and service option.</p>
 
-  <!-- ✏️ EDIT: Change service options below -->
   <ul class="service-list">
     <li>A. Join Our Product Testing Program</li>
     <li>B. Activate Your Warranty</li>
@@ -217,121 +373,102 @@
   </ul>
 
   <div class="btn-group">
-    <!-- ✏️ EDIT: Replace the email address in href="mailto:support@atgihpow.com" -->
-    <a href="https://mail.google.com/mail/?view=cm&to=gbvhdr@outlook.com" target="_blank" class="btn-contact">
-      <!-- Email icon -->
-      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
-        <rect x="2" y="4" width="20" height="16" rx="2"/>
-        <polyline points="22,4 12,13 2,4"/>
-      </svg>
+
+    <!-- Email button -->
+    <a href="mailto:gbvhdr@outlook.com?subject=Customer%20Service&body=" class="btn-contact">
       Contact Us by Email
     </a>
 
-    <!-- ✏️ EDIT: Replace YOUR_FACEBOOK_URL with your actual Facebook page or Messenger link -->
-    <!-- Example Messenger link: https://m.me/YourPageName -->
-    <!-- Example Facebook page: https://www.facebook.com/YourPageName -->
-    <a href="https://www.facebook.com/YOUR_FACEBOOK_URL" target="_blank" class="btn-contact fb">
-      <!-- Facebook icon -->
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
-      </svg>
-      Contact Us by Facebook
+    <a href="https://wa.me/?text=Hi%20GIN%20FOX%20Support%2C%20my%20Amazon%20order%20number%20is%3A%20" target="_blank" class="btn-contact">
+      Contact Us by WhatsApp
     </a>
+
   </div>
 </div>
 
-<!-- STATS CARD -->
+<!-- ══ STATS CARD ══ -->
 <div class="stats-card">
-  <!-- ✏️ EDIT: Change the customer count and badge items below -->
-  <div>
-    <span class="stats-number">216,040+</span>
-    <span class="stats-title">Customers Have Activated Their Warranty</span>
-  </div>
+  <h2><span id="warrantyCounter">216,040+</span> Customers Have Activated Their Warranty</h2>
   <div class="stats-grid">
-    <div class="stat-item">30 Days Free Trial</div>
-    <div class="stat-item">1 Year Warranty</div>
-    <div class="stat-item">Lifetime Customer Support</div>
-    <div class="stat-item">24/7 After-Sales Service</div>
+    <div class="stats-row">
+      <div class="stat-item">30 Days Free Trial</div>
+      <div class="stat-item">1 Year Warranty</div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-item">Lifetime Customer Support</div>
+      <div class="stat-item">24/7 After-Sales Service</div>
+    </div>
   </div>
 </div>
 
 <hr/>
 
-<!-- FAQ -->
+<!-- ══ FAQ – answers displayed directly ══ -->
 <div class="faq-section">
   <h2>Frequently Asked Questions</h2>
 
-  <!-- ✏️ EDIT: Add/remove/change FAQ items below -->
   <div class="faq-item">
-    <button class="faq-q" onclick="toggleFAQ(this)">
-      Why do you need my Amazon order number?
-      <span class="faq-icon">+</span>
-    </button>
+    <div class="faq-q">
+      <span class="faq-label">Q:</span> Why do you need my Amazon order number?
+
+    </div>
     <div class="faq-a">
-      <!-- ✏️ EDIT answer text -->
-      We use your Amazon order number to verify your purchase and activate your warranty in our system. This ensures only genuine GIN FOXI customers receive warranty service and allows us to look up your product details quickly.
+      <span class="faq-label">A:</span> It allows us to verify your purchase and activate your warranty.
     </div>
   </div>
 
   <div class="faq-item">
-    <button class="faq-q" onclick="toggleFAQ(this)">
-      How long does activation take?
-      <span class="faq-icon">+</span>
-    </button>
+    <div class="faq-q">
+      <span class="faq-label">Q:</span> How long does activation take?
+
+    </div>
     <div class="faq-a">
-      <!-- ✏️ EDIT answer text -->
-      Warranty activation is typically completed within 1–2 business days after we receive your order number. You will receive a confirmation email once your warranty has been activated.
+      <span class="faq-label">A:</span> Once we receive your message, your warranty will be activated.
     </div>
   </div>
 
   <div class="faq-item">
-    <button class="faq-q" onclick="toggleFAQ(this)">
-      Will you access my Amazon account?
-      <span class="faq-icon">+</span>
-    </button>
+    <div class="faq-q">
+      <span class="faq-label">Q:</span> Will you access my Amazon account?
+
+    </div>
     <div class="faq-a">
-      <!-- ✏️ EDIT answer text -->
-      No. We only ask for your order number (e.g., 123-4567890-1234567), which you can find in your Amazon order history. We will never ask for your Amazon login credentials, password, or any personal account access.
+      <span class="faq-label">A:</span> No. We only need the order number for verification.
     </div>
   </div>
 
   <div class="faq-item">
-    <button class="faq-q" onclick="toggleFAQ(this)">
-      Where can I find my order number?
-      <span class="faq-icon">+</span>
-    </button>
+    <div class="faq-q">
+      <span class="faq-label">Q:</span> Where can I find my order number?
+
+    </div>
     <div class="faq-a">
-      <!-- ✏️ EDIT answer text -->
-      Log in to Amazon → click "Returns & Orders" in the top-right corner → find your GIN FOXI order. Your order number will be shown at the top of the order details page (format: 123-4567890-1234567).
+      <span class="faq-label">A:</span> Go to "Your Orders" on Amazon and find the order number for this product.
     </div>
   </div>
 
   <div class="faq-item">
-    <button class="faq-q" onclick="toggleFAQ(this)">
-      What if my product has issues later?
-      <span class="faq-icon">+</span>
-    </button>
+    <div class="faq-q">
+      <span class="faq-label">Q:</span> What if my product has issues later?
+
+    </div>
     <div class="faq-a">
-      <!-- ✏️ EDIT answer text -->
-      If you experience any quality issues within the warranty period, simply contact us via email or Facebook with your order number and a description of the issue. Our support team will respond within 24 business hours with a solution.
+      <span class="faq-label">A:</span> Contact us anytime via Email or WhatsApp — we'll replace it if needed.
     </div>
   </div>
 
 </div>
 
-<!-- WARRANTY POLICY -->
+<!-- ══ WARRANTY POLICY ══ -->
 <div class="policy-section">
-  <!-- ✏️ EDIT: All policy text below is freely editable -->
   <h3>Warranty Policy</h3>
   <p>
-    GIN FOXI is committed to making you satisfied with our products and services. All GIN FOXI products come with a 1-year warranty. If you would like to activate the lifetime warranty, please contact our customer service via email at
-     <a href="mailto:gbvhdr@outlook.com">gbvhdr@outlook.com</a>.
-</p>
- 
-  <p>
-    By using GIN FOXI products, you agree to be bound by the terms of the GIN FOXI Limited Warranty. Please read the following information for specific warranty policy content.
+    GIN FOX is committed to making you satisfied with our products and services. All GIN FOX products come with a 1-year warranty. If you would like to activate the lifetime warranty, please contact our customer service via email at
+    <a href="mailto:gbvhdr@outlook.com">gbvhdr@outlook.com</a>.
   </p>
-
+  <p>
+    By using GIN FOX products, you agree to be bound by the terms of the GIN FOX Limited Warranty. Please read the following information for specific warranty policy content.
+  </p>
   <ol>
     <li>Product Quality Guarantee</li>
     <li>Warranty Period and Channels</li>
@@ -340,18 +477,18 @@
 
   <h4>1. Product Quality Guarantee</h4>
   <p>
-    GIN FOXI products undergo professional testing and certification, yet rare occurrences cannot be entirely avoided. If you encounter any quality issues with GIN FOXI products, please feel free to contact our customer service team at any time.
+    GIN FOX products undergo professional testing and certification, yet rare occurrences cannot be entirely avoided. If you encounter any quality issues with GIN FOX products, please feel free to contact our customer service team at any time.
   </p>
 
   <h4>2. Warranty Period and Channels</h4>
   <p>
-    All GIN FOXI products purchased through authorized channels have a 1-year warranty from the date of packaging delivery.
+    All GIN FOX products purchased through authorized channels have a 1-year warranty from the date of packaging delivery.
   </p>
   <p>
-    The warranty period starts once the product is received by the original purchaser. If you believe your GIN FOXI product has quality issues, please contact our customer support within the warranty period and provide proof of purchase. Our professional GIN FOXI customer service team will contact you within 24 business hours to provide a solution.
+    The warranty period starts once the product is received by the original purchaser. If you believe your GIN FOX product has quality issues, please contact our customer support within the warranty period and provide proof of purchase. Our professional GIN FOX customer service team will contact you within 24 business hours to provide a solution.
   </p>
   <p>
-    GIN FOXI products are sold on our official website, Amazon, and other official channels. Additionally, the manufacturers, suppliers, or resellers might offer its own warranties. Please reach out to your seller for further details.
+    GIN FOX products are sold on our official website, Amazon, and other official channels. Additionally, manufacturers, suppliers, or resellers might offer their own warranties. Please reach out to your seller for further details.
   </p>
   <p>
     To ensure you receive a legitimate product, we strongly advise purchasing from one of the aforementioned channels. We have received reports of fraudulent orders from other sources.
@@ -367,15 +504,44 @@
   </p>
 </div>
 
-<!-- FOOTER -->
+<!-- ══ FOOTER / NEWSLETTER ══ -->
 <footer>
-  <h3>Subscribe to Our Emails</h3>
-  <p>Be the first to know about new collections and exclusive offers.</p>
-  <div class="email-row">
-    <input type="email" placeholder="Email address" />
-    <button>Subscribe</button>
+  <h2 class="newsletter-title">Subscribe to our emails</h2>
+  <p class="newsletter-sub">Be the first to know about new collections and exclusive offers.</p>
+
+  <div class="newsletter-field">
+    <input
+      type="email"
+      id="newsletter-email"
+      name="contact[email]"
+      autocomplete="email"
+      placeholder="Email"
+      required
+    >
+    <label for="newsletter-email">Email</label>
+    <button type="submit" aria-label="Subscribe">
+      <!-- same arrow SVG as ATGIH -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10" width="14" height="10">
+        <path fill="currentColor" fill-rule="evenodd" d="M8.537.808a.5.5 0 0 1 .817-.162l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L11.793 5.5H1a.5.5 0 0 1 0-1h10.793L8.646 1.354a.5.5 0 0 1-.109-.546" clip-rule="evenodd"/>
+      </svg>
+    </button>
   </div>
-  <p class="footer-bottom">© 2025 GIN FOXI. All rights reserved.</p>
+
+  <p class="footer-bottom">© 2025 GIN FOX. All rights reserved.</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloud
+<script>
+  // Auto-increment warranty counter daily (same logic as ATGIH)
+  (function () {
+    const el = document.getElementById('warrantyCounter');
+    if (!el) return;
+    const startDate   = new Date('2024-01-01');
+    const startNumber = 200000;
+    const dailyRate   = 20;
+    const days = Math.floor((new Date() - startDate) / 86400000);
+    el.textContent = (startNumber + days * dailyRate).toLocaleString() + '+';
+  })();
+</script>
+
+</body>
+</html>
